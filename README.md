@@ -1,8 +1,6 @@
 # CI.3.E41181728_P4
 Dokumentasi Paraktikum Rest API dan CodeIgniter
 
-# DOKUMENTASI PRAKTIKUM 4 CODEIGNITER SERVER
-
 ## Komponen yang Diperlukan
 Berikut adalah komonenyang diperluan untuk pembuatan Rest API dan CI3, yaitu :
 1. PHP MYSQL
@@ -151,12 +149,10 @@ d.	Delete digunakan untuk menghapus data yang telah ada di server Rest API
     }
 ```
 ## Pengujian pada Postman
-a. Metode GET. Masukkan http://localhost/Belajar_CI_RA/index.php/kontak pada addres bar lalu klik send. Maka akan menampilkan semua data, namun saat memasukkan alamat http://localhost/Belajar_CI_RA/index.php/kontak?id=7 maka yang akan keuar data berdasarkan id 7 
-
-b. metode POST, masukan  http://localhost/Belajar_CI_RA/index.php/kontak pada address bar, klik "Body" pada menu dibawah address bar, pilih x-www-form-urlencoded, masukan key dan value yang diperlukan (id, nama, nomor), lalu klik "Send". Lalu lakukan metode GET untuk melihat data terbaru. Maka akan keluar data yang sebelumnya sudah ada sekaligus data yang baru diinputkan.
-c. Untuk mengujinya buka Postman, pilih metode PUT, masukan http://localhost/Belajar_CI_RA/index.php/kontak pada address bar, klik "Body" pada menu dibawah address bar, pilih x-www-form-urlencoded, masukan key id dan value id yang akan diubah (88) diikuti key dan value selanjutnya, lalu klik "Send". Lakukan metode GET untuk melihat data terbaru. Maka akan kita bisa melihat data yang telah kita ubah tadi dari id 88.
-d.	Untuk mengujinya buka Postman, pilih metode DELETE, masukan http://127.0.0.1/rest_ci/index.php/kontak pada address bar, klik "Body" pada menu dibawah address bar, pilih x-www-form-urlencoded, masukan key id dan value id yang akan dihapus (88), lalu klik "Send". Lakukan metode GET untuk melihat data terbaru. Maka data berdasarkan id 88 tidak akan tampil
-
+1.	Metode GET. Masukkan http://localhost/Belajar_CI_RA/index.php/kontak pada addres bar lalu klik send. Maka akan menampilkan semua data. Namun saat memasukkan alamat http://localhost/Belajar_CI_RA/index.php/kontak?id=7 maka yang akan keuar data berdasarkan id 7
+2.	Metode POST, masukan  http://localhost/Belajar_CI_RA/index.php/kontak pada address bar, klik "Body" pada menu dibawah address bar, pilih x-www-form-urlencoded, masukan key dan value yang diperlukan (id, nama, nomor), lalu klik "Send". Lalu lakukan metode GET untuk melihat data terbaru. Maka akan keluar data yang sebelumnya sudah ada sekaligus data yang baru diinputkan.
+3.	Untuk mengujinya buka Postman, pilih metode PUT, masukan http://localhost/Belajar_CI_RA/index.php/kontak pada address bar, klik "Body" pada menu dibawah address bar, pilih x-www-form-urlencoded, masukan key id dan value id yang akan diubah (88) diikuti key dan value selanjutnya, lalu klik "Send". Lakukan metode GET untuk melihat data terbaru. Maka akan kita bisa melihat data yang telah kita ubah tadi dari id 88.
+4.	Untuk mengujinya buka Postman, pilih metode DELETE, masukan http://127.0.0.1/rest_ci/index.php/kontak pada address bar, klik "Body" pada menu dibawah address bar, pilih x-www-form-urlencoded, masukan key id dan value id yang akan dihapus (88), lalu klik "Send". Lakukan metode GET untuk melihat data terbaru. Maka data berdasarkan id 88 tidak akan tampil.
 
 
 
