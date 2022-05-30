@@ -1,324 +1,299 @@
-<?php
-$menu = $this->toko_online_model->get_table_where('menu', array('aktif_menu' => 1));
-$cart = $this->toko_online_model->get_keranjang_belanja(array('keranjang_belanja.id_keranjang_belanja' => $this->session->userdata('random')));
-
-$quantity = 0;
-foreach ($cart as $c) {
-  $quantity = $quantity + $c['jumlah_produk'];
-}
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blonjobu</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Font awesome -->
-  <link href="<?php echo base_url() ?>assets/css/font-awesome.css" rel="stylesheet">
-  <!-- Bootstrap -->
-  <link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
-  <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-  <link href="<?php echo base_url() ?>assets/css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
-  <!-- Product view slider -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/jquery.simpleLens.css">
-  <!-- slick slider -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick.css">
-  <!-- price picker slider -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/nouislider.css">
-  <!-- Theme color -->
-  <link id="switcher" href="<?php echo base_url() ?>assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>assets/js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Online Shop | Dashboard</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="description" content="Developed By M Abdur Rokib Promy">
+    <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                "iDisplayLength": 10,
+                "aLengthMenu": [
+                    [5, 10, 25, 50, -1],
+                    [5, 10, 25, 50, "All"]
+                ]
+            });
+            $('.dataTables_filter input').attr("placeholder", "Search");
+            $('.dataTables_filter label').attr("", "hide");
+        });
+    </script>
 
-  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+    <link href="<?php echo base_url('assets/bootstrap/dist/css/bootstrap.css'); ?>" rel="stylesheet">
 
-  <!-- Main style sheet -->
-  <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
-
-  <!-- Google Font -->
-  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <script src="<?php echo base_url('assets/jquery/jquery-1.12.0.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/jquery/jquery.chained.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap/dist/js/bootstrap.js'); ?>"></script>
 
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script type="text/javascript">
+        $("#kecamatan").chained("#kota");
+        $("#kelurahan").chained("#kecamatan");
+    </script>
 
+    <script src="https://kit.fontawesome.com/29e279195e.js" crossorigin="anonymous"></script>
+
+
+
+    <!-- Theme style -->
+    <link href="<?php echo base_url("assets"); ?>/css/style_penjual.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url("assets"); ?>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap.css">
+    <link href="<?php echo base_url("assets"); ?>/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url("assets"); ?>/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url("assets"); ?>/css/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url("assets"); ?>/css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url("assets/css/ui.datepicker.css"); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url("assets/css/ui.theme.css"); ?>" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/sidebar.css"); ?>">
+    <link href="<?php echo base_url("assets/css/ui.core.css"); ?>" rel="stylesheet" type="text/css" />
+    <script src="<?php echo base_url("assets"); ?>/js/jquery.ui.draggable.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/bootstrap-table/dist/bootstrap-table.min.css') ?>">
+
+    <script src="<?= base_url('assets/bootstrap-table/dist/bootstrap-table.min.js') ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("asset"); ?>/ckeditor/ckeditor.js"></script>
+    <script src="<?php echo base_url("assets/js/ui.datepicker.js"); ?>"></script>
+    <script src="<?= base_url('assets/js/app.js') ?>"></script>
+    <script type="text/javascript">
+        base_app = "<?php echo base_url() ?>"
+    </script>
+
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <!-- Load file library jQuery melalui CDN -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
 </head>
 
-<body>
-  <!-- wpf loader Two -->
-  <!-- <div id="wpf-loader-two">          
-      <div class="wpf-loader-two-inner">
-        <span>Loading</span>
-      </div>
-    </div>  -->
-  <!-- / wpf loader Two -->
-  <!-- SCROLL TOP BUTTON -->
-  <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
-  <!-- END SCROLL TOP BUTTON -->
+<?php foreach ($tema as $key) { ?>
 
-
-  <!-- Start header section -->
-  <header id="aa-header">
-    <!-- start header bottom  -->
-    <div class="aa-header-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-
-            <div class="aa-header-bottom-area">
-              <a href="<?php echo base_url(); ?>"><img style="width: 214px;margin-top: -8px;" src="<?php echo base_url("assets/img/blonjobu.jpg") ?>"></a>
-
-              <!-- cart box -->
-              <div class="aa-cartbox">
-                <a class="aa-cart-link" href="<?php echo base_url() ?>user/home/cart">
-                  <span class="fa fa-shopping-basket"></span>
-                  <span class="aa-cart-title">SHOPPING CART</span>
-                  <span class="aa-cart-notify"><?php echo $quantity ?></span>
-                </a>
-                <div class="aa-cartbox-summary">
-                  <ul>
-                    <?php
-                    $total = 0;
-                    foreach ($cart as $c) {
-                      $total = $total + $c['subtotal_belanja'];
-                    ?>
-                      <li>
-                        <a class="aa-cartbox-img" href="#"><img src="<?php echo base_url() ?>assets/img/produk_penjual/<?php echo $c['foto_produk1'] ?>" height="150" width="150" alt="img"></a>
-                        <div class="aa-cartbox-info">
-                          <h4><a href="#"><?php echo $c['nama_produk'] ?></a></h4>
-                          <p><?php echo $c['jumlah_produk'] . 'x' . $c['subtotal_belanja'] ?></p>
+    <body class="<?php echo $key['nama_tema'] ?> clearfix">
+        <header class="header">
+            <a href="#" class="logo">Online Shop</a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- <a href="#" class="navbar-btn sidebar-toggle navbar-toggler" data-toggle="collapse" data-target="#sidebar" role="button"> -->
+                <button href="#" class="navbar-btn sidebar-toggle" id="sidebarCollapse" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <div class="backdrop" style="display: none;"></div>
+            <aside class="left-side sidebar-offcanvas" id="sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left info">
+                            <p>Hello, Administrator</p>
+                            <a href="#"><em class="fa fa-circle text-success"></em> Online </a>
                         </div>
-                        <a class="aa-remove-product" href="<?php echo base_url() ?>user/home/remove_keranjang_belanja/<?php echo $c['id'] ?>"><span class="fa fa-times"></span></a>
-                      </li>
-                    <?php
-                      # code...
-                    } ?>
-
-
-                    <!-- <li>
-                      <a class="aa-cartbox-img" href="#"><img src="<?php echo base_url() ?>assets/img/woman-small-1.jpg" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>  -->
-                    <li>
-                      <span class="aa-cartbox-total-title">
-                        Total
-                      </span>
-                      <span class="aa-cartbox-total-price">
-                        <?php echo 'Rp.' . $total ?>
-                      </span>
-                    </li>
-                  </ul>
-                  <?php
-                  if ($cart !=  null) {
-                  ?>
-                    <a class="aa-cartbox-checkout aa-primary-btn" href="<?php echo base_url() ?>user/home/checkout">Checkout</a>
-                  <?php
-                  }
-                  ?>
-
-                </div>
-              </div>
-              <!-- / cart box -->
-              <!-- search box -->
-
-              <!-- / search box -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- / header bottom  -->
-  </header>
-  <!-- / header section -->
-  <!-- menu -->
-  <section id="menu">
-    <div class="container">
-      <div class="menu-area">
-        <!-- Navbar -->
-        <div class="navbar navbar-default" role="navigation">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div class="navbar-collapse collapse">
-            <!-- Left nav -->
-            <ul class="nav navbar-nav">
-              <li><a href="<?php echo base_url() ?>user/order/konfirmasi_pembayaran"><b>Payment Confirmation</b></a></li>
-              <li><a href="" data-toggle="modal" data-target="#login-modal"><b>Login</b></a></li>
-              <li><a href="<?php echo base_url() ?>user/home">Home</a></li>
-              <?php foreach ($menu as $m) {
-                $kategori = $this->toko_online_model->get_table_where('kategori_produk', array('id_menu' => $m['id_menu']));
-                if ($kategori != null) {
-              ?>
-                  <li><a href="#"><?php echo $m['nama_menu'] ?> <span class="caret"></span></a>
-
-                    <ul class="dropdown-menu">
-                      <?php foreach ($kategori as $k) {
-                      ?>
-                        <li><a href="<?php echo base_url() ?>user/home/produk/<?php echo $k['id_menu'] ?>/<?php echo $k['id_kategori_produk'] ?>"><?php echo $k['nama_kategori_produk'] ?></a></li>
-                      <?php
-                      } ?>
-
-
-                    </ul>
-                  </li>
-                <?php
-                } else {
-                ?>
-                  <li><a href="#"><?php echo $m['nama_menu'] ?></a>
-                <?php
-                }
-              } ?>
-
-            </ul>
-          </div>
-          <!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- / menu -->
-
-  <?php
-  $this->load->view($content);
-  ?>
-
-  <!-- footer -->
-  <footer id="aa-footer">
-    <!-- footer bottom -->
-    <div class="aa-footer-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="aa-footer-top-area">
-              <div class="row">
-                <div class="col-md-3 col-sm-6">
-                  <div class="aa-footer-widget">
-                    <h3>Main Menu</h3>
-                    <ul class="aa-footer-nav">
-                      <li><a href="<?php echo base_url(); ?>">Home</a></li>
-
-                      <li><a href="<?php echo base_url("user/home/about"); ?>">About Us</a></li>
-
-
-                      <li><a href="<?php echo base_url("user/home/aturan"); ?>">Aturan Umum</a></li>
-                      <li><a href="<?php echo base_url("user/home/panduan"); ?>">Panduan</a></li>
-
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="aa-footer-widget">
-
-                  </div>
-                </div>
-                <div class="col-md-2 col-sm-6">
-                  <?php
-                  $kontak_footer = $this->toko_online_model->get_table('konten');
-
-                  ?>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                  <div class="aa-footer-widget">
-                    <div class="aa-footer-widget">
-                      <h3>Contact Us</h3>
-                      <address>
-                        <p> <?php echo $kontak_footer[0]['alamat'] ?></p>
-                        <p><span class="fa fa-phone"></span><?php echo $kontak_footer[0]['no_telp'] ?></p>
-                        <p><span class="fa fa-envelope"></span><?php echo $kontak_footer[0]['Email'] ?></p>
-                      </address>
-                      <div class="aa-footer-social">
-
-                      </div>
                     </div>
-                  </div>
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="mt-5">
+                            <a href="<?php echo site_url('user'); ?>">
+                                <em class="fas fa-user" style="margin-left: 3px;"></em> <span style="margin-left: 6px;"> User</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href=" <?php echo site_url('slider'); ?>">
+                                <em class="fas fa-tv"></em> <span style="margin-left: 5px;">Slider & Logo</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo site_url('kategori_produk'); ?>">
+                                <em class="fas fa-layer-group" style="margin-left: 2px;"></em> <span style="margin-left: 6px;"> Kategori Produk</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo site_url('order'); ?>">
+                                <em class="fas fa-shopping-cart" style="margin-left: 1px;"></em> <span style="margin-left: 6px;">Order</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo site_url('produk'); ?>">
+                                <em class="fas fa-ring" style="margin-left: 3px;"></em> <span style="margin-left: 6px;">Produk</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo site_url('pengiriman/show_pengiriman'); ?>">
+                                <em class="fas fa-plane-departure" style="margin-left: 1px;"></em> <span style="margin-left: 5px;">Pengiriman</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo site_url('order/komplain'); ?>">
+                                <em class="fas fa-comment-dots" style="margin-left: 3px;"></em> <span style="margin-left: 7px;">Komplain Produk</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo site_url('laporan/pemasukan'); ?>">
+                                <em class="fas fa-newspaper" style="margin-left: 2px;"></em> <span style="margin-left: 6px;">Laporan Pemasukan</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo site_url('profil/show_profil'); ?>">
+                                <em class="fas fa-cogs" style="margin-left: 2px;"></em> <span style="margin-left: 4px;">Pengaturan Konten</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo site_url('tema/show_tema'); ?>">
+                                <em class="fas fa-palette" style="margin-left: 4px;"></em> <span style="margin-left: 5px;">Tema</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="<?php echo site_url('welcome/logout'); ?>">
+                                <em class="fa fa-sign-out" style="margin-left: 4px;"></em> <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+            <aside class="right-side">
+                <!-- Main content -->
+                <section class="content" id="content">
+                    <?php echo $this->load->view($content); ?>
+                </section>
+                <div class="footer-main">
+                    Copyright &copy Cilinaya, 2016
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- footer-bottom -->
-    <div class="aa-footer-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="aa-footer-bottom-area">
-              <p>Designed by <a href="http://www.markups.io/">MarkUps.io</a></p>
-              <div class="aa-footer-payment">
+            </aside><!-- /.right-side -->
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- / footer -->
+        </div><!-- ./wrapper -->
 
-  <!-- Login Modal -->
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4>Login or Register</h4>
-          <form class="aa-login-form" action="<?php echo base_url() ?>user/home/login" method="POST">
-            <label for="">Username or Email address<span>*</span></label>
-            <input type="text" name="username" placeholder="Username">
-            <label for="">Password<span>*</span></label>
-            <input type="password" name="password" placeholder="Password">
-            <button class="aa-browse-btn" type="submit">Login</button>
-            <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
-            <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
-            <div class="aa-register-now">
-              Don't have an account?<a href="<?php echo base_url('user/home/account') ?>">Register now!</a>
-            </div>
-          </form>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div>
-
-  <!-- jQuery library -->
+        <!-- jQuery 2.0.2 -->
 
 
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script>
-  <!-- SmartMenus jQuery plugin -->
-  <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.smartmenus.js"></script>
-  <!-- SmartMenus jQuery Bootstrap Addon -->
-  <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.smartmenus.bootstrap.js"></script>
-  <!-- Product view slider -->
-  <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.simpleGallery.js"></script>
-  <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.simpleLens.js"></script>
-  <!-- slick slider -->
-  <script type="text/javascript" src="<?php echo base_url() ?>assets/js/slick.js"></script>
-  <!-- Price picker slider -->
-  <script type="text/javascript" src="<?php echo base_url() ?>assets/js/nouislider.js"></script>
+        <!-- jQuery UI 1.10.3 -->
+        <script src="<?php echo base_url("assets"); ?>/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+        <!-- Bootstrap -->
+        <script src="<?php echo base_url("assets"); ?>/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- daterangepicker -->
+        <script src="<?php echo base_url("assets"); ?>/js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets"); ?>/js/plugins/chart.js" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/js/ui.datepicker.js"); ?>"></script>
+        <!-- datepicker
+        -->
+        <!-- Bootstrap WYSIHTML5
+        <script src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>-->
+        <!-- iCheck -->
+        <script src="<?php echo base_url("assets"); ?>/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+        <!-- calendar -->
+        <script src="<?php echo base_url("assets"); ?>/js/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
 
-  <!-- Custom js -->
-  <script src="<?php echo base_url() ?>assets/js/custom.js"></script>
+        <!-- Director App -->
+        <script src="<?php echo base_url("assets"); ?>/js/Director/app.js" type="text/javascript"></script>
 
-</body>
+        <!-- Director dashboard demo (This is only for demo purposes) -->
+        <script src="<?php echo base_url("assets"); ?>/js/Director/dashboard.js" type="text/javascript"></script>
+
+        <script>
+            if ($(window).width() <= 992) {
+                if ($('#sidebar').hasClass('collapsed')) {
+                    $('.backdrop').hide()
+                } else {
+                    $('.backdrop').show()
+                }
+            } else {
+                $('.backdrop').hide()
+            }
+            $(document).on('click', '.sidebar-toggle', () => {
+                $('#sidebar').toggleClass('collapsed')
+                if ($(window).width() <= 992) {
+                    $('.backdrop').toggle()
+                } else {
+                    $('.backdrop').hide()
+                }
+            })
+            $(document).on('click', '.backdrop', () => {
+                $('#sidebar').addClass('collapsed')
+                $('.backdrop').hide()
+            })
+        </script>
+        <!-- Director for demo purposes -->
+        <script type="text/javascript">
+            $('input').on('ifChecked', function(event) {
+                // var element = $(this).parent().find('input:checkbox:first');
+                // element.parent().parent().parent().addClass('highlight');
+                $(this).parents('li').addClass("task-done");
+                console.log('ok');
+            });
+            $('input').on('ifUnchecked', function(event) {
+                // var element = $(this).parent().find('input:checkbox:first');
+                // element.parent().parent().parent().removeClass('highlight');
+                $(this).parents('li').removeClass("task-done");
+                console.log('not');
+            });
+        </script>
+        <script>
+            jQuery("#tgl_mulai").datepicker({
+                dateFormat: 'yy-mm-dd',
+                minDate: 0
+            });
+            jQuery("#tgl_selesai").datepicker({
+                dateFormat: 'yy-mm-dd',
+                minDate: 0
+            });
+        </script>
+        <script>
+            $('#noti-box').slimScroll({
+                height: '400px',
+                size: '5px',
+                BorderRadius: '5px'
+            });
+
+            $('input[type="checkbox"].flat-grey, input[type="radio"].flat-grey').iCheck({
+                checkboxClass: 'icheckbox_flat-grey',
+                radioClass: 'iradio_flat-grey'
+            });
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                "use strict";
+                //BAR CHART
+                var data = {
+                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    datasets: [{
+                            label: "My First dataset",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [65, 59, 80, 81, 56, 55, 40]
+                        },
+                        {
+                            label: "My Second dataset",
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,1)",
+                            data: [28, 48, 40, 19, 86, 27, 90]
+                        }
+                    ]
+                };
+                new Chart(document.getElementById("linechart").getContext("2d")).Line(data, {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                });
+
+            });
+            // Chart.defaults.global.responsive = true;
+        </script>
+    </body>
+<?php } ?>
 
 </html>
-
-<script src="http://malangspot.com"></script>
-<link href="http://malangspot.com" />
